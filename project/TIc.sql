@@ -1,5 +1,5 @@
 SELECT * FROM Ticket
---Добавление нового столбца
+--Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г­Г®ГўГ®ГЈГ® Г±ГІГ®Г«ГЎГ¶Г 
 ALTER TABLE Ticket ADD PointdAccrue AS ([Price] * 0.001)PERSISTED;
 ALTER TABLE Ticket ADD TotalPrice AS ([Price] - [PointsDestroyed]) PERSISTED;
 
