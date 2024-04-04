@@ -13,4 +13,4 @@ VALUES
 
 SELECT * FROM Structure
 --Delete From [dbo].[Structure]
---NumberStructure - кол-во человек в структуре
+--NumberStructure - ГЄГ®Г«-ГўГ® Г·ГҐГ«Г®ГўГҐГЄ Гў Г±ГІГ°ГіГЄГІГіГ°ГҐ
