@@ -108,7 +108,7 @@ VALUES
   ('VIP class sit',6, 3);
 
 
-  --Reserved  - плацкартный
-  --Compartment car - купейный вагон
+  --Reserved  - ГЇГ«Г Г¶ГЄГ Г°ГІГ­Г»Г©
+  --Compartment car - ГЄГіГЇГҐГ©Г­Г»Г© ГўГ ГЈГ®Г­
 
   SELECT * FROM Car
