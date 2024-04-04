@@ -9,7 +9,7 @@ JOIN Traveler AS TR ON TI.TravelerID = TR.TravelerID
 WHERE TR.TravelerID = @ID
 )
 
---Тестирование функции fn_GetTicket
+--Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ fn_GetTicket
 GO
 SELECT * FROM dbo.fn_GetTicket(5);
 
@@ -36,10 +36,10 @@ BEGIN
 	BEGIN
 		FETCH NEXT FROM CURS INTO @TIME, @TicketNumber
 		IF TRY_CAST(@TIME AS time) > CONVERt(time, GETDATE())
-			SET @IS = 'Билет готов к использованию'
+			SET @IS = 'ГЃГЁГ«ГҐГІ ГЈГ®ГІГ®Гў ГЄ ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГѕ'
 			                   -- TRY_CAST(@TicketNumber AS nchar (100))
 		ELSE
-			SET @IS = 'Билет истек'
+			SET @IS = 'ГЃГЁГ«ГҐГІ ГЁГ±ГІГҐГЄ'
 			                    --TRY_CAST(@TicketNumber AS nchar(100))
 		SET @COUNT = @COUNT - 1
 		PRINT @IS
@@ -50,7 +50,7 @@ BEGIN
 END;
 
 --CONVERT(date, Ticket.TimeSale, 102)
---Тестирование хранимой процедуры pr_ActualTicket
+--Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ ГµГ°Г Г­ГЁГ¬Г®Г© ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г» pr_ActualTicket
 GO
 EXEC pr_ActualTicket 1
 
@@ -75,10 +75,10 @@ BEGIN
    PRINT 0
 END
 
---Тестирование хранимой процедуры
-EXEC dbo.pr_TypeCar N'CV' -- существующий тип вагона
+--Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ ГµГ°Г Г­ГЁГ¬Г®Г© ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г»
+EXEC dbo.pr_TypeCar N'CV' -- Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГІГЁГЇ ГўГ ГЈГ®Г­Г 
 
---Удаление
+--Г“Г¤Г Г«ГҐГ­ГЁГҐ
 drop proc dbo.pr_TypeCar
 
 GO
@@ -119,8 +119,8 @@ SELECT dbo.fn_Wensday(8)
 
 
 --1
---Хранимая процедура pr_ChangeSeats для изменения номера места
---Данная процедура необходима, так как пассажир может захотеть изменить номер места, пересесть на другое во время пути движения поезда
+--Г•Г°Г Г­ГЁГ¬Г Гї ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г  pr_ChangeSeats Г¤Г«Гї ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї Г­Г®Г¬ГҐГ°Г  Г¬ГҐГ±ГІГ 
+--Г„Г Г­Г­Г Гї ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г  Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г , ГІГ ГЄ ГЄГ ГЄ ГЇГ Г±Г±Г Г¦ГЁГ° Г¬Г®Г¦ГҐГІ Г§Г ГµГ®ГІГҐГІГј ГЁГ§Г¬ГҐГ­ГЁГІГј Г­Г®Г¬ГҐГ° Г¬ГҐГ±ГІГ , ГЇГҐГ°ГҐГ±ГҐГ±ГІГј Г­Г  Г¤Г°ГіГЈГ®ГҐ ГўГ® ГўГ°ГҐГ¬Гї ГЇГіГІГЁ Г¤ГўГЁГ¦ГҐГ­ГЁГї ГЇГ®ГҐГ§Г¤Г 
 GO
 CREATE PROC pr_ChangeSeats (@TicketID int, @NewNubmer char(100))
 AS
@@ -128,7 +128,7 @@ BEGIN
 	UPDATE dbo.Ticket
 	SET PlaceNumber = @NewNubmer
 	WHERE TicketID = @TicketID
-	--Подсчет самого популярного места
+	--ГЏГ®Г¤Г±Г·ГҐГІ Г±Г Г¬Г®ГЈГ® ГЇГ®ГЇГіГ«ГїГ°Г­Г®ГЈГ® Г¬ГҐГ±ГІГ 
 	SELECT PlaceNumber, 
 	   COUNT(*) AS counting
 	FROM Ticket
@@ -137,7 +137,7 @@ BEGIN
 	ORDER BY PlaceNumber;
 END
 GO
---Подсчет самого популярного места
+--ГЏГ®Г¤Г±Г·ГҐГІ Г±Г Г¬Г®ГЈГ® ГЇГ®ГЇГіГ«ГїГ°Г­Г®ГЈГ® Г¬ГҐГ±ГІГ 
 SELECT PlaceNumber, 
 	   COUNT(*) AS counting
   FROM Ticket
@@ -146,6 +146,6 @@ SELECT PlaceNumber,
  ORDER BY PlaceNumber;
 --
 --
---Тестирование
+--Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ
 GO
 EXEC pr_ChangeSeats 1, 15
